@@ -31,7 +31,7 @@ namespace ChatTopicsDemo2023.Pages
             List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
             List<ChatMessage> distinct = chatMessages.Distinct().ToList();
             MemberLst.ItemsSource = distinct.ToList();
-            ChatLst.ItemsSource = chatMessages.ToList();
+            ChatLst.ItemsSource = message.Chatroom.ChatMessage.ToList();
         }
 
 
@@ -73,10 +73,8 @@ namespace ChatTopicsDemo2023.Pages
             }
             finally
             {
-                var chatRoom = ((Employee)LoginWindow.employee).Id;
-                List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
-                ChatLst.ItemsSource = chatMessages.ToList();
-
+                
+                ChatLst.ItemsSource = message.Chatroom.ChatMessage.ToList();
             }
         }
     }
