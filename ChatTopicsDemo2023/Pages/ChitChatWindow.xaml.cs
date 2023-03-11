@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChatTopicsDemo2023
+namespace ChatTopicsDemo2023.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ChitChatWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ChitChatWindow : Window
     {
-        public MainWindow()
+        public ChitChatWindow()
         {
             InitializeComponent();
         }
