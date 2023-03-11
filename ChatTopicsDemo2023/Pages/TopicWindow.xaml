@@ -5,8 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatTopicsDemo2023.Pages"
         mc:Ignorable="d"
-        Title="TopicWindow" Height="450" Width="800">
+        Title="TopicWindow" Height="477" Width="473" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" >
     <Grid>
-        
+        <Button x:Name="LeaveBtn" Content="Leave Chatroom" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Margin="0,289,0,0" VerticalAlignment="Top" Height="29" Width="142" 
+                FontFamily="Calibri" FontSize="16" Click="LeaveBtn_Click"/>
+        <Button x:Name="ChangeBtn" Content="Change Topic" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Margin="0,260,0,0" VerticalAlignment="Top" Height="29" Width="142" 
+                FontFamily="Calibri" FontSize="16" Click="ChangeBtn_Click"/>
+        <Button x:Name="AddBtn" Content="Add User" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Margin="0,231,0,0" VerticalAlignment="Top" Height="29" Width="142" 
+                FontFamily="Calibri" FontSize="16" Click="AddBtn_Click"/>
+        <TextBox x:Name="MessageTB" HorizontalAlignment="Left" BorderThickness="3" BorderBrush="Black " Margin="0,318,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" Height="143"/>
+        <Button x:Name="SendBtn" Content="Send" Background="LightBlue" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Margin="382,318,0,0" 
+                VerticalAlignment="Top" Height="143" Width="91" FontFamily="Calibri" FontSize="16" Click="SendBtn_Click"/>
+        <ListView x:Name="MemberLst" Margin="0,22,331,230">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border  BorderThickness="1" Height="Auto" Width="111">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="95" RenderTransformOrigin="0.5,0.5" >
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <StackPanel VerticalAlignment="Center" Height="41" >
+                                <Label  Height="25" Width="67" Margin="15" x:Name="Namelbl" Content="{Binding Employee.Name}" RenderTransformOrigin="0.5,0.5">
+                                    <Label.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Label.RenderTransform>
+                                </Label>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="ChatLst" Margin="142,22,0,143">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border  BorderThickness="1" Height="Auto" Width="Auto">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="320" Height="46" >
+
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" >
+                                <Label  Height="44" Width="60" Margin="15" x:Name="DateLbl" Content="{Binding Date}"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" >
+                                <Label  Height="44" Width="53" Margin="15" x:Name="Namelbl" Content="{Binding Employee.Name}"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" >
+                                <Label  Height="44" Width="118" Margin="15" x:Name="Messagelbl" Content="{Binding Message}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Topic:" VerticalAlignment="Top" Width="31" Margin="10,1,0,0" IsEnabled="False"/>
+        <TextBox x:Name="TopicTB" HorizontalAlignment="Left" Margin="41,1,0,0" TextWrapping="Wrap" BorderBrush="White" VerticalAlignment="Top" Width="276" IsEnabled="False"/>
+
     </Grid>
 </Window>

@@ -20,11 +20,65 @@ namespace ChatTopicsDemo2023.Pages
     /// </summary>
     public partial class TopicWindow : Window
     {
-        ChatMessage chat = new ChatMessage();
-        public TopicWindow(ChatMessage chat)
+        public ChatDBEntities dbEntities = new ChatDBEntities();
+        ChatMessage message;
+        public TopicWindow(ChatMessage chatMessager)
         {
             InitializeComponent();
-            this.chat = chat;
+            this.message = chatMessager;
+            TopicTB.Text = message.Chatroom.Topic;
+            var chatRoom = ((Employee)LoginWindow.employee).Id;
+            List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
+            List<ChatMessage> distinct = chatMessages.Distinct().ToList();
+            MemberLst.ItemsSource = distinct.ToList();
+            ChatLst.ItemsSource = chatMessages.ToList();
+        }
+
+
+        private void ChangeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ChitChatTopicsWindow chitopics = new ChitChatTopicsWindow();
+            chitopics.Show();
+            this.Close();
+        }
+
+        private void LeaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ChitChatWindow chit = new ChitChatWindow();
+            chit.Show();
+        }
+
+        private void SendBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ChatMessage chat = new ChatMessage();
+                var chatRoom = ((Employee)LoginWindow.employee).Id;
+                List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
+                chat.Sender_Id = message.Sender_Id;
+                chat.Chatroom_Id = message.Chatroom_Id;
+                chat.Date = DateTime.Now;
+                chat.Message = MessageTB.Text;
+                dbEntities.ChatMessage.Add(chat);
+                dbEntities.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+            finally
+            {
+                var chatRoom = ((Employee)LoginWindow.employee).Id;
+                List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
+                ChatLst.ItemsSource = chatMessages.ToList();
+
+            }
         }
     }
 }
+

@@ -27,7 +27,7 @@ namespace ChatTopicsDemo2023.Pages
             InitializeComponent();
             NameTB.Text = LoginWindow.employee.Name;
             var chatRoom = ((Employee)LoginWindow.employee).Id;
-            TopicLV.ItemsSource = dbEntities.ChatMessage.Where(x => x.Id == chatRoom).ToList();
+            TopicLV.ItemsSource = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
         }
 
         private void EmplFinderBtn_Click(object sender, RoutedEventArgs e)
