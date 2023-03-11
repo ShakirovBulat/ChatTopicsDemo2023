@@ -11,21 +11,13 @@
             <ColumnDefinition Width="255*"/>
             <ColumnDefinition Width="218*"/>
         </Grid.ColumnDefinitions>
-        <Expander HorizontalAlignment="Left" BorderThickness="3" BorderBrush="Black" Height="441" Header="Departments" VerticalAlignment="Center" Width="176">
+        <Expander x:Name="DepartmentsExp" HorizontalAlignment="Left" BorderThickness="3" BorderBrush="Black" Height="441" Header="Departments" VerticalAlignment="Center" Width="176">
             <Grid Background="#FFE5E5E5">
                 <StackPanel>
-                    <CheckBox Content="Admin">
-
-                    </CheckBox>
-                    <CheckBox Content="IT Helpdesk">
-
-                    </CheckBox>
-                    <CheckBox Content="Sales">
-
-                    </CheckBox>
-                    <CheckBox Content="Marketing">
-
-                    </CheckBox>
+                    <CheckBox x:Name="AdminCB" Content="Admin" TabIndex="1" Checked="CheckBox_Checked"/>
+                    <CheckBox x:Name="HelpdeskCB" Content="IT Helpdesk" TabIndex="2" Checked="CheckBox_Checked"/>
+                    <CheckBox x:Name="SalesCB" Content="Sales" TabIndex="3" Checked="CheckBox_Checked"/>
+                    <CheckBox x:Name="MarketingCB" Content="Marketing" TabIndex="4" Checked="CheckBox_Checked"/>
                 </StackPanel>
             </Grid>
         </Expander>
@@ -41,10 +33,10 @@
         <ListView x:Name="SearchLst" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="Black" BorderThickness="2" Margin="215,37,36,0" Grid.ColumnSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1" Height="Auto" Width="Auto">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Border BorderBrush="White" BorderThickness="1" Height="Auto" Width="Auto">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="199" >
                             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" >
-                                <Label Height="80" Width="80" Margin="15" x:Name="Name" Content="{Binding Name}"/>
+                                <Label Height="26" Width="170" Margin="15" x:Name="Name" Content="{Binding Name}"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

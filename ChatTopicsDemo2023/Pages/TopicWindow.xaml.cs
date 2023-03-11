@@ -32,7 +32,8 @@ namespace ChatTopicsDemo2023.Pages
             List<ChatMessage> distinct = chatMessages.Distinct().ToList();
             MemberLst.ItemsSource = distinct.ToList();
             ChatLst.ItemsSource = message.Chatroom.ChatMessage.ToList();
-            //Лист идет по возрастанию datetime, а точнее времени
+            //Лист идет по возрастанию datetime, а точнее времени.
+            //Лист обновляется только при полном перезагрузке приложения т.к незнаю как обновить message в кнопке send.
         }
 
 
