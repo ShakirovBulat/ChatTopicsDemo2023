@@ -27,11 +27,12 @@ namespace ChatTopicsDemo2023.Pages
             InitializeComponent();
             this.message = chatMessager;
             TopicTB.Text = message.Chatroom.Topic;
-            var chatRoom = ((Employee)LoginWindow.employee).Id;
+            var chatRoom = LoginWindow.employee.Id;
             List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
             List<ChatMessage> distinct = chatMessages.Distinct().ToList();
             MemberLst.ItemsSource = distinct.ToList();
             ChatLst.ItemsSource = message.Chatroom.ChatMessage.ToList();
+            //Лист идет по возрастанию datetime, а точнее времени
         }
 
 
@@ -58,8 +59,6 @@ namespace ChatTopicsDemo2023.Pages
             try
             {
                 ChatMessage chat = new ChatMessage();
-                var chatRoom = ((Employee)LoginWindow.employee).Id;
-                List<ChatMessage> chatMessages = dbEntities.ChatMessage.Where(x => x.Chatroom_Id == chatRoom).ToList();
                 chat.Sender_Id = message.Sender_Id;
                 chat.Chatroom_Id = message.Chatroom_Id;
                 chat.Date = DateTime.Now;
@@ -73,7 +72,6 @@ namespace ChatTopicsDemo2023.Pages
             }
             finally
             {
-                
                 ChatLst.ItemsSource = message.Chatroom.ChatMessage.ToList();
             }
         }
